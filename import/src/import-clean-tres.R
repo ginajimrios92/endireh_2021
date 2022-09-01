@@ -69,7 +69,6 @@ data$edad[data$edad>97] <- NA
 saveRDS(data, files$endireh11)
 
 
-
 ##### ENDIREH 2016 ###
 files <- list(lib=paste0(direc, "endireh_2016/conjunto_de_datos_tb_sec_xiv_endireh_2016.csv"),
               fam_ori=paste0(direc, "endireh_2016/conjunto_de_datos_tb_sec_xi_endireh_2016.csv"),
@@ -86,25 +85,50 @@ personas <- function(x){
                  x==6 ~ "Otras personas")
 }
 
+sino <- function(x){
+  x <- case_when(x==1 ~ "Sí",
+                 x==2 ~ "No")
+}
+
 
 data <- read.csv(files$lib)%>%
-  clean_names()%>%
-  select(id_viv:t_instrum, 
-         starts_with("p14_1ab"),
-         fac_viv:est_dis)%>%
-  mutate_at(vars(p14_1_ab))
+        clean_names()%>%
+        select(id_viv:t_instrum, 
+        starts_with("p14_1ab"),
+          fac_viv:est_dis)
+         
 
 tempo <- read.csv(files$socio)%>%
-  clean_names()%>%
-  select(id_viv:cod_res, sexo, edad, niv,
-         fac_viv:upm_dis, hijos:elegidas)%>%
-  mutate_at(vars(edad, niv), as.character)%>%
-  mutate_at(vars(edad, niv), as.numeric)%>%
-  mutate(niv=case_when(niv<2 ~ 1,
-                       niv==2 ~ 2,
-                       niv==3 | niv==5 ~ 3,
-                       niv==4 | niv==6 | niv==8 ~ 4,
-                       niv==7 | niv==9 | niv==10 | niv==11 ~ 5),
+         clean_names()%>%
+         select(id_viv:cod_res, sexo, edad, niv, gra,
+                fac_viv:upm_dis)
+
+data <- left_join(data, tempo)
+
+tempo <- read.csv(files$fam_ori)%>%
+         clean_names()%>%
+         select(id_viv:t_instrum,
+                     starts_with("p11_12_"))
+
+data <- left_join(data, tempo)
+rm(tempo)
+         
+data <- mutate_at(data, vars(p14_1ab_1:p14_1ab_15), personas)%>%
+        mutate_at(vars(edad, niv), as.character)%>%
+        mutate_at(vars(edad, niv), as.numeric)%>%
+        mutate_at(vars(starts_with("p11_12_")), sino)%>%
+        mutate(escol=case_when(niv<2 ~ 1,
+                               niv==2 & gra<6 ~ 1,
+                               niv==2 & gra>=6 ~ 2,
+                               niv==3 & gra<3 ~ 2,
+                               niv==3 & gra>=3 ~ 3,
+                               niv==4 & gra<3 ~ 4,
+                               niv==4 & gra>=3 ~ 4,
+                               niv==5 ~ 2,
+                               niv==6 ~ 3,
+                               niv==7 ~ 4,
+                               niv==8 ~ 3,
+                               niv>8 ~ 5),
          escol=factor(niv, levels=c(1:5), 
                       labels=c("Sin escolaridad",
                                "Primaria",
@@ -126,13 +150,75 @@ tempo <- read.csv(files$socio)%>%
                                       "Más de 65 años")),
          veinteomas = ifelse(edad>19, 1, 0))
 
+saveRDS(data, files$endireh16)
+
+
+##### ENDIREH 2021 ###
+files <- list(lib=paste0(direc, "endireh_2021/TB_SEC_XV.csv"),
+              fam_ori=paste0(direc, "endireh_2021/TB_SEC_XII.csv"),
+              socio=paste0(direc, "endireh_2021/TSDem.csv"),
+              endireh21=here("import/output/endireh2021.rds"))
+
+
+data <- read.csv(files$lib)%>%
+        clean_names()%>%
+        select(id_viv:t_instrum, 
+               starts_with("p15_1ab"),
+              fac_viv:est_dis)
+
+tempo <- read.csv(files$socio)%>%
+         clean_names()%>%
+         select(id_viv:n_ren, sexo, edad, niv, gra,
+         fac_viv:upm_dis)
+
 data <- left_join(data, tempo)
 
 tempo <- read.csv(files$fam_ori)%>%
-  
-  
-  saveRDS(data, files$endireh)
+         clean_names()%>%
+         select(id_viv:t_instrum,
+                starts_with("p12_14_"))
 
+data <- left_join(data, tempo)
+rm(tempp)
+
+data <- mutate_at(data, vars(p15_1ab_1:p15_1ab_11), personas)%>%
+        mutate_at(vars(edad, niv), as.character)%>%
+        mutate_at(vars(edad, niv), as.numeric)%>%
+        mutate_at(vars(starts_with("p12_14_")), sino)%>%
+        mutate(escol=case_when(niv<2 ~ 1,
+                               niv==2 & gra<6 ~ 1,
+                               niv==2 & gra>=6 ~ 2,
+                               niv==3 & gra<3 ~ 2,
+                               niv==3 & gra>=3 ~ 3,
+                               niv==4 & gra<3 ~ 4,
+                               niv==4 & gra>=3 ~ 4,
+                               niv==5 ~ 2,
+                               niv==6 ~ 3,
+                               niv==7 ~ 4,
+                               niv==8 ~ 3,
+                               niv>8 ~ 5),
+         escol=factor(niv, levels=c(1:5), 
+                      labels=c("Sin escolaridad",
+                               "Primaria",
+                               "Secundaria \n o equivalente",
+                               "Preparatoria \n o equivalente",
+                               "Licenciatura \n o más")),
+         grupo_edad = case_when(edad %in% 15:25 ~ 1,
+                                edad %in% 26:35 ~ 2,
+                                edad %in% 36:45 ~ 3,
+                                edad %in% 46:55 ~ 4,
+                                edad %in% 56:65 ~ 5,
+                                edad > 65 ~ 6),
+         grupo_edad = factor(grupo_edad, levels=c(1:6),
+                             labels=c("15 a 25 años",
+                                      "26 a 35 años",
+                                      "36 a 45 años",
+                                      "46 a 55 años",
+                                      "56 a 65 años",
+                                      "Más de 65 años")),
+         veinteomas = ifelse(edad>19, 1, 0))
+
+saveRDS(data, files$endireh21)
          
 # done.
 
