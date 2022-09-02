@@ -16,6 +16,14 @@ files <- list(endireh11 = here("import-clean/output/endireh2011.rds"),
 #### Tema y funciones ####
 source(here("descriptives/src/theme.R"))
 
+suma <- function(x) {
+  x <- ifelse(x>0, 1, 2)
+}
+
+sino <- function(x){
+  x <- case_when(x==1 ~ "Sí",
+                 x==2 ~ "No")
+}
 
 #### Gráficas de libertad ####
 solo_ella <- function(x){
@@ -122,28 +130,69 @@ endireh16 <- readRDS(files$endireh16)
 endireh21 <- readRDS(files$endireh21)%>%
              filter(veinteomas==1)
 
-data <- bind_rows(endireh16, endireh21)
+data <- bind_rows(endireh16, endireh21)%>%
+        mutate(viosexinf=rowSums(.[,41:46], na.rm=T),
+               viosexinf=sino(suma(viosexinf)))
 
-tempo <- data%>%
-  mutate(help=substr(t_instrum, 0, 1))%>%
-  filter(help!="C")%>%
-  select(-help)%>%
-  select(fac_muj, manoseos:vio_din, escol, grupo_edad, year)
-
-vars <- names(tempo)[2:7]
-
-decisiones <- data.frame()
+vars <- c("viopsiinf", "viofisinf", "viosexinf")
+tempo <- data.frame()
 
 for (i in 1:length(vars)) {
-  tempo2 <- group_by(tempo, year, tempo[vars[i]], escol)%>%
-            summarize(total=sum(fac_muj, na.rm=T))
-  tempo2 <- group_by(tempo2, year, escol)%>%
-            mutate(den=sum(total),
-                   per=total/den*100)
-  tempo2 <- tempo2[c(6:10, 21:25),c(1,3,6)]
-  tempo2$decision <- vars[i]
-  decisiones <- bind_rows(decisiones, tempo2)
+minitempo <- data%>%
+             group_by(data[vars[i]], year)%>%
+             summarize(total=sum(fac_muj))%>%
+             ungroup()%>%
+             group_by(year)%>%
+             mutate(den=sum(total, na.rm=T), 
+             per=total/den*100)
+minitempo <- minitempo[c(3:4),c(2,5)]
+minitempo$vars <- vars[i]
+tempo <- bind_rows(tempo, minitempo)
 }
-rm(tempo, tempo2)
+
+tempo%>%
+mutate(vars=gsub("viopsiinf", "Violencia psicológica", vars),
+       vars=gsub("viofisinf", "Violencia física", vars),
+       vars=gsub("viosexinf", "Violencia sexual", vars))%>%
+ggplot()+
+geom_bar(aes(x=vars, y=per, fill=as.factor(year)),
+         stat="identity", position="dodge")+
+tema+
+labs(title="Porcentaje de mujeres que dicen haber vivido violencia antes de los 15 años",
+     subtitle="Según tipo de violencia",
+     y="", x="", fill="Año")+
+scale_fill_manual(values=pal)+
+coord_flip()
+
+tempo <- data.frame()
+for (i in 1:length(vars)) {
+minitempo <- data%>%
+    group_by(data[vars[i]], year, grupo_edad)%>%
+    summarize(total=sum(fac_muj))%>%
+    ungroup()%>%
+    group_by(year, grupo_edad)%>%
+    mutate(den=sum(total, na.rm=T), 
+           per=total/den*100)
+  minitempo <- minitempo[c(13:24),c(2,3,6)]
+  minitempo$vars <- vars[i]
+  tempo <- bind_rows(tempo, minitempo)
+}
+
+tempo%>%
+  mutate(vars=gsub("viopsiinf", "Violencia psicológica", vars),
+         vars=gsub("viofisinf", "Violencia física", vars),
+         vars=gsub("viosexinf", "Violencia sexual", vars))%>%
+  ggplot()+
+  geom_bar(aes(x=grupo_edad, y=per, fill=as.factor(year)),
+           stat="identity", position="dodge")+
+  tema+
+  labs(title="Porcentaje de mujeres que dicen haber vivido violencia antes de los 15 años",
+       subtitle="Según tipo de violencia",
+       y="", x="", fill="Año")+
+  coord_flip()+
+  facet_wrap(~vars)+
+  scale_fill_manual(values=pal)
+save("violencia-infancia")
+
 
 
