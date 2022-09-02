@@ -98,6 +98,9 @@ suma <- function(x) {
   x <- ifelse(x>0, 1, 0)
 }
 
+noacero <- function(x) {
+  x <- ifelse(x==2, 0, x)
+}
 
 #Limpiamos
 data <- read.csv(files$lib)%>%
@@ -133,7 +136,6 @@ rm(tempo)
 data <- mutate_at(data, vars(p14_1ab_1:p14_1ab_15), personas)%>%
         mutate_at(vars(edad, niv), as.character)%>%
         mutate_at(vars(edad, niv), as.numeric)%>%
-        mutate_at(vars(starts_with("p11_12_")), sino)%>%
         mutate(escol=case_when(niv<2 ~ 1,
                                niv==2 & gra<6 ~ 1,
                                niv==2 & gra>=6 ~ 2,
@@ -169,6 +171,7 @@ data <- mutate_at(data, vars(p14_1ab_1:p14_1ab_15), personas)%>%
                                       "Más de 65 años")),
          veinteomas = ifelse(edad>19, 1, 0), 
          year=2016)%>%
+         mutate_at(vars(starts_with("p11_12_")), noacero)%>%
          mutate_at(vars(p11_6, p11_7, p13_4:p13_7_2), sino)%>%
          mutate_at(vars(starts_with("p13_1_")), change)%>%
          mutate(vio_fis=rowSums(.[,49:57], na.rm=T),
@@ -249,7 +252,7 @@ rm(tempo)
 data <- mutate_at(data, vars(p15_1ab_1:p15_1ab_17), personas)%>%
         mutate_at(vars(edad, niv), as.character)%>%
         mutate_at(vars(edad, niv), as.numeric)%>%
-        mutate_at(vars(starts_with("p12_14_")), sino)%>%
+        mutate_at(vars(starts_with("p12_14_")), noacero)%>%
         mutate(escol=case_when(niv<2 ~ 1,
                                niv==2 & gra<6 ~ 1,
                                niv==2 & gra>=6 ~ 2,
