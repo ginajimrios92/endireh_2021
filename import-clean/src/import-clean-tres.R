@@ -95,7 +95,7 @@ change <- function(x) {
 }
 
 suma <- function(x) {
-  x <- ifelse(x>0, 1, 0)
+  x <- ifelse(x>0, 1, 2)
 }
 
 noacero <- function(x) {
