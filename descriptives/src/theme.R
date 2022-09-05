@@ -29,8 +29,8 @@ save <- function(name){
 }
 
 
-caption1 <- "Fuente: Encuesta Nacional Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2011, 2016 y 2021"
-caption2 <- "Fuente: Encuesta Nacional Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2016 y 2021"
+caption1 <- "Fuente: Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2011, 2016 y 2021"
+caption2 <- "Fuente: Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2016 y 2021"
 
 
 # done.

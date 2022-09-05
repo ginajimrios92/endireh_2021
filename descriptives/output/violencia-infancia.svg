@@ -21,38 +21,38 @@
 <rect x='0.00' y='0.00' width='864.00' height='576.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
 </g>
 <defs>
-  <clipPath id='cpMTA1LjExfDg1OC41Mnw0NC45OHw1MzEuMDU='>
-    <rect x='105.11' y='44.98' width='753.41' height='486.07' />
+  <clipPath id='cpMTA1LjExfDg1OC41Mnw2Ni41OHw1MzEuMDU='>
+    <rect x='105.11' y='66.58' width='753.41' height='464.47' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMTA1LjExfDg1OC41Mnw0NC45OHw1MzEuMDU=)'>
-<rect x='105.11' y='44.98' width='753.41' height='486.07' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<polyline points='105.11,439.91 858.52,439.91 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='105.11,288.01 858.52,288.01 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='105.11,136.12 858.52,136.12 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='124.47,531.05 124.47,44.98 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='297.02,531.05 297.02,44.98 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='469.57,531.05 469.57,44.98 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='642.12,531.05 642.12,44.98 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='814.67,531.05 814.67,44.98 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<line x1='714.53' y1='439.91' x2='824.27' y2='439.91' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
-<circle cx='714.53' cy='439.91' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
-<circle cx='824.27' cy='439.91' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
-<line x1='227.19' y1='288.01' x2='384.10' y2='288.01' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
-<circle cx='227.19' cy='288.01' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
-<circle cx='384.10' cy='288.01' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
-<line x1='139.36' y1='136.12' x2='236.06' y2='136.12' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
-<circle cx='139.36' cy='136.12' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
-<circle cx='236.06' cy='136.12' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
-<rect x='105.11' y='44.98' width='753.41' height='486.07' style='stroke-width: 1.07; stroke: #333333;' />
+<g clip-path='url(#cpMTA1LjExfDg1OC41Mnw2Ni41OHw1MzEuMDU=)'>
+<rect x='105.11' y='66.58' width='753.41' height='464.47' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<polyline points='105.11,443.96 858.52,443.96 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='105.11,298.81 858.52,298.81 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='105.11,153.67 858.52,153.67 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='124.47,531.05 124.47,66.58 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='297.02,531.05 297.02,66.58 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='469.57,531.05 469.57,66.58 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='642.12,531.05 642.12,66.58 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='814.67,531.05 814.67,66.58 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<line x1='714.53' y1='443.96' x2='824.27' y2='443.96' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
+<circle cx='714.53' cy='443.96' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
+<circle cx='824.27' cy='443.96' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
+<line x1='227.19' y1='298.81' x2='384.10' y2='298.81' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
+<circle cx='227.19' cy='298.81' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
+<circle cx='384.10' cy='298.81' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
+<line x1='139.36' y1='153.67' x2='236.06' y2='153.67' style='stroke-width: 6.40; stroke: #61304B; stroke-linecap: butt;' />
+<circle cx='139.36' cy='153.67' r='4.20' style='stroke-width: 0.71; stroke: #857C8D; fill: #857C8D;' />
+<circle cx='236.06' cy='153.67' r='4.36' style='stroke-width: 0.71; stroke: #94BFBE; fill: #94BFBE;' />
+<rect x='105.11' y='66.58' width='753.41' height='464.47' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHw1NzYuMDA=)'>
-<text x='100.18' y='443.06' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='59.38px' lengthAdjust='spacingAndGlyphs'>Violencia física</text>
-<text x='100.18' y='291.16' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='81.84px' lengthAdjust='spacingAndGlyphs'>Violencia psicológica</text>
-<text x='100.18' y='139.26' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='63.36px' lengthAdjust='spacingAndGlyphs'>Violencia sexual</text>
-<polyline points='102.37,439.91 105.11,439.91 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='102.37,288.01 105.11,288.01 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
-<polyline points='102.37,136.12 105.11,136.12 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<text x='100.18' y='447.11' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='59.38px' lengthAdjust='spacingAndGlyphs'>Violencia física</text>
+<text x='100.18' y='301.96' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='81.84px' lengthAdjust='spacingAndGlyphs'>Violencia psicológica</text>
+<text x='100.18' y='156.81' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='63.36px' lengthAdjust='spacingAndGlyphs'>Violencia sexual</text>
+<polyline points='102.37,443.96 105.11,443.96 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='102.37,298.81 105.11,298.81 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
+<polyline points='102.37,153.67 105.11,153.67 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
 <polyline points='124.47,533.79 124.47,531.05 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
 <polyline points='297.02,533.79 297.02,531.05 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
 <polyline points='469.57,533.79 469.57,531.05 ' style='stroke-width: 0.43; stroke: #B3B3B3; stroke-linecap: butt;' />
@@ -63,8 +63,9 @@
 <text x='469.57' y='542.27' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='9.23px' lengthAdjust='spacingAndGlyphs'>25</text>
 <text x='642.12' y='542.27' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='9.23px' lengthAdjust='spacingAndGlyphs'>30</text>
 <text x='814.67' y='542.27' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Trebuchet MS;' textLength='9.23px' lengthAdjust='spacingAndGlyphs'>35</text>
-<text x='105.11' y='37.25' style='font-size: 11.00px; font-family: Trebuchet MS;' textLength='127.04px' lengthAdjust='spacingAndGlyphs'>Según el tipo de violencia</text>
-<text x='105.11' y='19.79' style='font-size: 20.00px; font-weight: bold; font-family: Trebuchet MS;' textLength='879.36px' lengthAdjust='spacingAndGlyphs'>Porcentaje de mujeres entrevistadas que dijeron haber vivido violencia durante la infancia...</text>
-<text x='858.52' y='568.71' text-anchor='end' style='font-size: 8.80px; font-family: Trebuchet MS;' textLength='430.75px' lengthAdjust='spacingAndGlyphs'>Fuente: Encuesta Nacional Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2016 y 2021</text>
+<text x='105.11' y='58.85' style='font-size: 11.00px; font-family: Trebuchet MS;' textLength='127.04px' lengthAdjust='spacingAndGlyphs'>Según el tipo de violencia</text>
+<text x='105.11' y='19.79' style='font-size: 20.00px; font-weight: bold; font-family: Trebuchet MS;' textLength='590.44px' lengthAdjust='spacingAndGlyphs'>Porcentaje de mujeres entrevistadas que dijeron haber vivido </text>
+<text x='105.11' y='41.39' style='font-size: 20.00px; font-weight: bold; font-family: Trebuchet MS;' textLength='294.96px' lengthAdjust='spacingAndGlyphs'> violencia durante la infancia...</text>
+<text x='858.52' y='568.71' text-anchor='end' style='font-size: 8.80px; font-family: Trebuchet MS;' textLength='356.44px' lengthAdjust='spacingAndGlyphs'>Fuente: Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares 2016 y 2021</text>
 </g>
 </svg>

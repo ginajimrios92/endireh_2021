@@ -5,7 +5,7 @@
 
 #### Paquetería ####
 if(!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse, here, ggplot2)
+pacman::p_load(tidyverse, here, ggplot2, ggalt)
 options(scipen=999)
 
 files <- list(endireh11 = here("import-clean/output/endireh2011.rds"),
@@ -134,6 +134,7 @@ data <- bind_rows(endireh16, endireh21)%>%
         mutate(viosexinf=rowSums(.[,41:46], na.rm=T),
                viosexinf=sino(suma(viosexinf)))
 
+
 vars <- c("viopsiinf", "viofisinf", "viosexinf")
 tempo <- data.frame()
 
@@ -146,7 +147,9 @@ minitempo <- data%>%
              mutate(den=sum(total, na.rm=T), 
              per=total/den*100)
 minitempo <- minitempo[c(3:4),c(2,5)]
+minitempo <- pivot_wider(minitempo, names_from="year", values_from="per")
 minitempo$vars <- vars[i]
+names(minitempo) <- c("y2016", "y2021", "vars")
 tempo <- bind_rows(tempo, minitempo)
 }
 
@@ -154,15 +157,15 @@ tempo%>%
 mutate(vars=gsub("viopsiinf", "Violencia psicológica", vars),
        vars=gsub("viofisinf", "Violencia física", vars),
        vars=gsub("viosexinf", "Violencia sexual", vars))%>%
-ggplot()+
-geom_bar(aes(x=vars, y=per, fill=as.factor(year)),
-         stat="identity", position="dodge")+
-tema+
-labs(title="Porcentaje de mujeres que dicen haber vivido violencia antes de los 15 años",
-     subtitle="Según tipo de violencia",
-     y="", x="", fill="Año")+
-scale_fill_manual(values=pal)+
-coord_flip()
+  ggplot(aes(x=y2016, xend=y2021, y=vars))+
+  geom_dumbbell(color=pal[1], size=3, colour_x = pal[2],
+                colour_xend = pal[3])+
+  tema+
+  labs(title="Porcentaje de mujeres entrevistadas que dijeron haber vivido violencia durante la infancia...",
+       subtitle="Según el tipo de violencia",
+       x="", y="", fill="",
+       caption=caption2)
+save("violencia-infancia")
 
 tempo <- data.frame()
 for (i in 1:length(vars)) {
@@ -181,18 +184,52 @@ minitempo <- data%>%
 tempo%>%
   mutate(vars=gsub("viopsiinf", "Violencia psicológica", vars),
          vars=gsub("viofisinf", "Violencia física", vars),
-         vars=gsub("viosexinf", "Violencia sexual", vars))%>%
+         vars=gsub("viosexinf", "Violencia sexual", vars),
+         order=as.numeric(grupo_edad))%>%
   ggplot()+
-  geom_bar(aes(x=grupo_edad, y=per, fill=as.factor(year)),
+  geom_bar(aes(x=reorder(grupo_edad, -order), y=per, fill=as.factor(year)),
            stat="identity", position="dodge")+
   tema+
   labs(title="Porcentaje de mujeres que dicen haber vivido violencia antes de los 15 años",
-       subtitle="Según tipo de violencia",
+       subtitle="Según su edad y el tipo de violencia",
        y="", x="", fill="Año")+
   coord_flip()+
   facet_wrap(~vars)+
   scale_fill_manual(values=pal)
-save("violencia-infancia")
+save("violencia-infancia-edades")
+
+
+tempo <- data.frame()
+for (i in 1:length(vars)) {
+  minitempo <- data%>%
+    group_by(data[vars[i]], year, escol)%>%
+    summarize(total=sum(fac_muj))%>%
+    ungroup()%>%
+    group_by(year, escol)%>%
+    mutate(den=sum(total, na.rm=T), 
+           per=total/den*100)
+  minitempo <- minitempo[c(11:20),c(2,3,6)]
+  minitempo$vars <- vars[i]
+  tempo <- bind_rows(tempo, minitempo)
+}
+
+tempo%>%
+  mutate(vars=gsub("viopsiinf", "Violencia psicológica", vars),
+         vars=gsub("viofisinf", "Violencia física", vars),
+         vars=gsub("viosexinf", "Violencia sexual", vars))%>%
+  ggplot()+
+  geom_bar(aes(x=escol, y=per, fill=as.factor(year)),
+           stat="identity", position="dodge")+
+  tema+
+  labs(title="Porcentaje de mujeres que dicen haber vivido violencia antes de los 15 años",
+       subtitle="Según su escolaridad y el tipo de violencia",
+       y="", x="", fill="Año")+
+  coord_flip()+
+  facet_wrap(~vars)+
+  scale_fill_manual(values=pal)
+save("violencia-infancia-escolaridad")
+
+
 
 
 
